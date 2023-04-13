@@ -22,7 +22,7 @@ jobs:
 
                     - { php-version: "8.1", dependencies: "highest", pimcore_version: "", phpstan_args: "", experimental: false }
                     - { php-version: "8.2", dependencies: "highest", pimcore_version: "", phpstan_args: "", experimental: false }
-                    - { php-version: "8.2", dependencies: "highest", pimcore_version: "11.x-dev", phpstan_args: "", experimental: false }
+                    - { php-version: "8.2", dependencies: "highest", pimcore_version: "11.x-dev", phpstan_args: "", experimental: true }
         steps:
             -   name: "Checkout code"
                 uses: "actions/checkout@v2"
@@ -36,7 +36,7 @@ jobs:
             -   name: "Setup Pimcore environment"
                 run: |
                     .github/ci/scripts/setup-pimcore-environment.sh
-           
+
             -   name: "Update Pimcore version"
                 env:
                     PIMCORE_VERSION: "${{ matrix.pimcore_version }}"
